@@ -2,7 +2,7 @@
     IMPORT FONTS
 -------------------------------------------------------------------*/
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700');
 
 
@@ -35,8 +35,9 @@
  body {
      color: #666666;
      font-size: 15px;
-     font-family: 'Dosis', sans-serif;
+     font-family: 'Poppins', sans-serif;
      line-height: 1.80857;
+     
 }
  a {
      color: #1f1f1f;
@@ -515,16 +516,16 @@
      padding-right: 30px;
 }
  nav.navbar.bootsnav ul.nav li.active > a{
-     color: #b0b435;
+     color: #007bff;
 }
  nav.navbar.bootsnav ul.nav li.active > a:hover{
-     color: #b0b435;
+     color: #007bff;
 }
  nav.navbar.bootsnav ul.nav li > a:hover{
-     color: #b0b435;
+     color: #007bff;
 }
  nav.navbar.bootsnav ul.nav li.megamenu-fw > a:hover{
-     color: #b0b435;
+     color: #007bff;
 }
  @media (min-width: 1024px) {
      nav.navbar.navbar-inverse ul.nav .dropdown-menu{
@@ -1369,7 +1370,7 @@
      font-weight: 700;
 }
  .footer-widget h4::before {
-     border-bottom: 3px solid #b0b435;
+     border-bottom: 3px solid #fff;
      content: "";
      height: 3px;
      width: 100%;
@@ -1396,7 +1397,7 @@
      font-weight: 700;
 }
  .footer-link h4::before {
-     border-bottom: 3px solid #b0b435;
+     border-bottom: 3px solid #fff;
      content: "";
      height: 3px;
      width: 100%;
@@ -1451,7 +1452,7 @@
      font-weight: 700;
 }
  .footer-link-contact h4::before {
-     border-bottom: 3px solid #b0b435;
+     border-bottom: 3px solid #fff;
      content: "";
      height: 3px;
      width: 100%;
@@ -1484,7 +1485,7 @@
      color: #cccccc;
 }
  .footer-link-contact ul li p a:hover{
-     color: #b0b435;
+     color: #007bff;
 }
 /*------------------------------------------------------------------ Copyright -------------------------------------------------------------------*/
  .footer-copyright{
@@ -1501,7 +1502,7 @@
      color: #ffffff;
 }
  .footer-copyright p a:hover{
-     color: #b0b435;
+     color: #007bff;
 }
 /*------------------------------------------------------------------ All Pages -------------------------------------------------------------------*/
  .all-title-box{
