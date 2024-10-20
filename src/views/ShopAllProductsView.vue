@@ -128,7 +128,7 @@
                                             <option value="4">Best Selling</option>
                                         </select>
                                     </div> -->
-                                    <p style="margin-top: 15px;">Showing all 4 results</p>
+                                    <p>Showing all 4 results</p>
                                 </div>
                             </div>
 

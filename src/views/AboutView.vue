@@ -1,6 +1,5 @@
 <template>
-
-    <body>
+    <div>
         <header class="main-header">
             <!-- Start Navigation -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
@@ -11,52 +10,30 @@
                             aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <a class="navbar-brand" href="index.html"><img src="../assets/images/logo/logo.png" class="logo"
-                                alt=""></a>
+                        <router-link class="navbar-brand" to="/"><img src="../assets/images/logo/logo.png" class="logo" alt=""></router-link>
                     </div>
                     <!-- End Header Navigation -->
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item active"><a class="nav-link" href="about.html">About Us</a></li>
+                            <li class="nav-item"><router-link class="nav-link" to="/">Home</router-link></li>
+                            <li class="nav-item active"><router-link class="nav-link" to="/about">About Us</router-link></li>
                             <li class="dropdown">
-                                <a href="#" class="nav-link" data-toggle="dropdown">SHOP</a>
+                                <a class="nav-link" to="#" data-toggle="dropdown" style="cursor: pointer;">SHOP</a>
                                 <ul class="dropdown-menu">
-                                    <li class="dropdown">
-                                        <a href="#" class="nav-link" data-toggle="dropdown">Products</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="shop-all-products.html">Shop All Products</a></li>
-                                            <li><a href="#">Electronics</a></li>
-                                            <li><a href="#">Books</a></li>
-                                            <li><a href="#">Appliances</a></li>
-                                            <li><a href="#">Furniture</a></li>
-                                            <li><a href="#">Other</a></li>
-                                            <li><a href="#">Sell</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="nav-link" data-toggle="dropdown">Services</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Shop All Services</a></li>
-                                            <li><a href="#">Tutoring</a></li>
-                                            <li><a href="#">Women Hairstyling</a></li>
-                                            <li><a href="#">Men Hair Cuts</a></li>
-                                            <li><a href="#">Other</a></li>
-                                            <li><a href="#">Sell</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
+                                    <li><router-link class="nav-link" to="products" data-toggle="dropdown">Products</router-link></li>
+                                    <li><router-link class="nav-link" to="services" data-toggle="dropdown">Services</router-link></li>
+                                    <li><router-link to="/login">Wishlist</router-link></li>
+                                    <li><router-link to="/login">My Account</router-link></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
-                            <li class="login-box" style="margin-top: 10px;">
-                                <select id="basic" class="selectpicker form-control" onchange="handleSelect(this)">
-                                    <option value="">Select Option</option>
-                                    <option value="register.html">Register Here</option>
-                                    <option value="signin.html">Sign In</option>
+                            <li class="nav-item"><router-link class="nav-link" to="/contact">Contact Us</router-link></li>
+                            <li class="login-box" style="margin-top: 25px;">
+                                <select class="form-control custom-select" @change="handleSelect">
+                                    <option value="">Select</option>
+                                    <option value="RegisterView">Register</option>
+                                    <option value="LoginView">Sign In</option>
                                 </select>
                             </li>
                         </ul>
@@ -67,14 +44,13 @@
                     <div class="attr-nav">
                         <ul>
                             <li>
-                                <a href="signin.html" title="Cart">
-                                    <i class="fa fa-shopping-bag"></i>
-                                </a>
+                                <router-link to="/login" title="Cart">
+                                    <i class="fa fa-shopping-bag" style="color: red;"></i>
+                                </router-link>
                             </li>
                         </ul>
                     </div>
                 </div>
-
             </nav>
             <!-- End Navigation -->
         </header>
@@ -87,7 +63,7 @@
                     <div class="col-lg-12">
                         <h2>ABOUT US</h2>
                         <!-- <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
                             <li class="breadcrumb-item active">ABOUT US</li>
                         </ul> -->
                     </div>
@@ -101,26 +77,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5">
-                        <div class="banner-frame" style="margin-top: 80px; margin-right: 50px;"> <img class="img-fluid"
-                                src="../assets/images/about/cover.jpg" alt="" />
+                        <div class="banner-frame" style="margin-top: 120px; margin-right: 50px;">
+                            <img class="img-fluid rounded shadow" src="../assets/images/about/cover.jpg" alt="About Us Cover" />
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <h2 class="noo-sh-title-top">We are <span>EduMarket</span></h2>
-                        <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-                            voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-                            dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-                            ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                            voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
-                            laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                            Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-                            consequatur.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <h2 class="noo-sh-title-top">Discover the Story Behind <span class="text-primary">EduMarket</span></h2>
+                        <p class="text-justify">
+                            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
+                            qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,<br><br> 
+                            adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? 
+                            Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -133,7 +104,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
-                                <h4>About Freshshop</h4>
+                                <h4>About EduMarket</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -168,7 +139,7 @@
                                         <input class="" type="email" name="Email" placeholder="Email Address*" />
                                         <i class="fa fa-envelope"></i>
                                     </div>
-                                    <button class="btn hvr-hover" type="submit">Submit</button>
+                                    <button class="btn" type="submit" style="background-color: #007bff;">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -176,15 +147,94 @@
                 </div>
             </div>
         </footer>
-        <a href="#" id="back-to-top" title="Back to top" style="display: none;"></a>
-    </body>
+
+        <button class="scroll-button" @click="scrollToTop">Top</button>
+        <button class="scroll-button" @click="scrollToBottom">Bottom</button>
+    </div>
 </template>
 
 <script>
 export default {
     name: "AboutView",
-
+    methods: {
+        handleSelect(event) {
+            const value = event.target.value;
+            if (value) {
+                this.$router.push({ name: value });
+            }
+        },
+        scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        },
+        scrollToBottom() {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+    }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.custom-select {
+  background-color: #007bff;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.custom-select:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.scroll-button {
+  position: fixed;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.scroll-button:first-of-type {
+  bottom: 80px;
+}
+
+.scroll-button:last-of-type {
+  bottom: 20px;
+}
+
+.about-box-main {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.banner-frame {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.noo-sh-title-top {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.noo-sh-title-top span {
+    color: #007bff;
+}
+
+.text-justify {
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+</style>
