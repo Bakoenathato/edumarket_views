@@ -13,7 +13,6 @@ import ServiceDetailsView from '../views/ServiceDetailsView.vue'
 import ProductDetailsView from '../views/ProductDetailsView.vue'
 import MyAccountView from '../views/MyAccountView.vue'
 import CartView from '../views/CartView.vue'
-import CheckoutView from '../views/CheckoutView.vue'
 
 const routes = [
   {
@@ -85,11 +84,6 @@ const routes = [
     path: "/cart",
     name: "CartView",
     component: CartView,
-  },
-  {
-    path: "/checkout",
-    name: "CheckoutView",
-    component: CheckoutView,
   }
 ]
 
