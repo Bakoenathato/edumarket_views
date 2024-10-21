@@ -79,6 +79,9 @@ export default {
           this.user
         );
         const { data } = response;
+
+        localStorage.setItem("user-id", data.userId);
+
         if (data.message === "Email not exists") {
           alert("Email does not exists");
         } else if (data.message === "Login Success") {
@@ -88,6 +91,7 @@ export default {
          
           const loggedInUser = response.data.find(u => u.email === this.user.email && u.password === this.user.password);
           console.log(loggedInUser);
+
 
           if (loggedInUser.role === "ADMIN"){
             alert("Admin LogIn Successful");

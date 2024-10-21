@@ -14,6 +14,7 @@ import ProductDetailsView from '../views/ProductDetailsView.vue'
 import MyAccountView from '../views/MyAccountView.vue'
 import CartView from '../views/CartView.vue'
 import CheckoutView from '../views/CheckoutView.vue'
+import EditProfileView from '@/views/EditProfileView.vue'
 
 const routes = [
   {
@@ -90,6 +91,12 @@ const routes = [
     path: "/checkout",
     name: "CheckoutView",
     component: CheckoutView,
+  },
+
+  {
+    path: "/editProfile",
+    name: "EditProfileView",
+    component: EditProfileView,
   }
 ]
 

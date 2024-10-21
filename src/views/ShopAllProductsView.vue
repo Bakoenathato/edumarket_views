@@ -358,7 +358,7 @@
   </template>
 
 <script>
-export default {
+ export default {
   name: "ShopAllProductsView",
   data() {
     return {
