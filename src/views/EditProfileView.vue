@@ -169,9 +169,9 @@ export default {
     async updateUser() {
       try {
         const updatedUserData = {
-            userId: this.$route.query.userId,
-            firstName: this.firstName,
-            lastName: this.lastName,
+          userId: this.$route.query.userId,
+          firstName: this.firstName,
+          lastName: this.lastName,
           phone: this.phone,
           email: this.email,
           password: this.password,
