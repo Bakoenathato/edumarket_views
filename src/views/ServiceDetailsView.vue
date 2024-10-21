@@ -1,251 +1,321 @@
 <template>
+    <div>
+        <!-- Start Main Top -->
+        <header class="main-header">
+            <!-- Start Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+                <div class="container">
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                            aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand"><img src="../assets/images/logo/logo.png" class="logo" alt="" /></a>
+                    </div>
+                    <!-- End Header Navigation -->
 
-<body>
-    
-    <!-- Start Main Top -->
-    <header class="main-header">
-        <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-            <div class="container">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                    <a class="navbar-brand" href="index.html"><img src="../assets/images/logo/logo.png" class="logo" alt=""></a>
-                </div>
-                <!-- End Header Navigation -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                            <li class="dropdown">
+                                <a class="nav-link" to="#" data-toggle="dropdown" style="cursor: pointer">Products</a>
+                                <ul class="dropdown-menu">
+                                    <li><router-link :to="{ path: '/products', query: { userId } }">Shop All
+                                            Products</router-link></li>
+                                    <li><router-link
+                                            :to="{ path: '/electronics', query: { userId } }">Electronics</router-link>
+                                    </li>
+                                    <li><router-link :to="{ path: '/books', query: { userId } }">Books</router-link>
+                                    </li>
+                                    <li><router-link
+                                            :to="{ path: '/appliances', query: { userId } }">Appliances</router-link>
+                                    </li>
+                                    <li><router-link
+                                            :to="{ path: '/furniture', query: { userId } }">Furniture</router-link></li>
+                                    <li><router-link
+                                            :to="{ path: '/product-others', query: { userId } }">Other</router-link>
+                                    </li>
+                                    <li><router-link :to="getRouteWithUserId('/add-product')">Sell</router-link></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="nav-link" to="#" data-toggle="dropdown" style="cursor: pointer">Services</a>
+                                <ul class="dropdown-menu">
+                                    <li><router-link :to="{ path: '/services', query: { userId } }">Shop All
+                                            Services</router-link></li>
+                                    <li><router-link
+                                            :to="{ path: '/tutoring', query: { userId } }">Tutoring</router-link></li>
+                                    <li><router-link :to="{ path: '/women-hairstyling', query: { userId } }">Women
+                                            Hairstyling</router-link></li>
+                                    <li><router-link :to="{ path: '/men-cuts', query: { userId } }">Men Hair
+                                            Cuts</router-link></li>
+                                    <li><router-link
+                                            :to="{ path: '/service-others', query: { userId } }">Other</router-link>
+                                    </li>
+                                    <li><router-link :to="getRouteWithUserId('/add-service')">Sell</router-link></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <router-link :to="getRouteWithUserId('/wishlist')"
+                                    class="nav-link">Wishlist</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link :to="getRouteWithUserId('/my-account')" class="nav-link">My
+                                    Account</router-link>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown">Products</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="shop-all-products.html">Shop All Products</a></li>
-                                <li><a href="#">Electronics</a></li>
-                                <li><a href="#">Books</a></li>
-                                <li><a href="#">Appliances</a></li>
-                                <li><a href="#">Furniture</a></li>
-                                <li><a href="#">Other</a></li>
-                                <li><a href="#">Sell</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown">Services</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="shop-all-services.html">Shop All Services</a></li>
-                                <li><a href="#">Tutoring</a></li>
-                                <li><a href="#">Women Hairstyling</a></li>
-                                <li><a href="#">Men Hair Cuts</a></li>
-                                <li><a href="#">Other</a></li>
-                                <li><a href="#">Sell</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="wishlist.html">Wishlist</a></li>
-                        <li class="nav-item"><a class="nav-link" href="my-account.html">My Account</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-
-                <!-- Start Atribute Navigation -->
-                <div class="attr-nav">
-                    <ul>
-                        <!-- <li class="search" title="Search"><a href="#"><i class="fa fa-search"></i></a></li> -->
-                        <li class="side-menu" title="Cart"><a href="#">
-						<i class="fa fa-shopping-bag"></i>
-					</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="images/products/electronics/lenovo.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/products/electronics/lenovo.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/products/electronics/lenovo.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
-                        <li class="total">
-                            <a href="cart.html" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-        </nav>
-        <!-- End Navigation -->
-    </header>
-    <!-- End Main Top -->
-
-    <!-- Start All Title Box -->
-    <div class="all-title-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Service Details</h2>
-                    <!-- <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active">Service Details</li>
-                    </ul> -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End All Title Box -->
-
-    <!-- Start Shop Detail  -->
-    <div class="shop-detail-box-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-5 col-lg-5 col-md-6">
-                    <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active"> <img class="d-block w-100" src="../assets/images/categories/services/men-haircut.webp" alt="First slide"> </div>
-                            <div class="carousel-item"> <img class="d-block w-100" src="../assets/images/categories/services/men-haircut.webp" alt="Second slide"> </div>
-                            <div class="carousel-item"> <img class="d-block w-100" src="../assets/images/categories/services/men-haircut.webp" alt="Third slide"> </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev"> 
-						<i class="fa fa-angle-left" aria-hidden="true"></i>
-						<span class="sr-only">Previous</span> 
-					</a>
-                        <a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next"> 
-						<i class="fa fa-angle-right" aria-hidden="true"></i> 
-						<span class="sr-only">Next</span> 
-					</a>
+                    <!-- Start Atribute Navigation -->
+                    <div class="attr-nav">
+                        <ul>
+                            <li class="side-menu" title="Cart">
+                                <router-link :to="getRouteWithUserId('/cart')">
+                                    <i class="fa fa-shopping-bag" style="color: red"></i>
+                                </router-link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-xl-7 col-lg-7 col-md-6">
-                    <div class="single-product-details">
-                        <h2>Fachion Lorem ipsum dolor sit amet</h2>
-                        <h5> <del>$ 60.00</del> $40.79</h5>
-                        <p class="available-stock"><span> More than 20 available / <a href="#">8 sold </a></span></p>
-						<h4>Short Description:</h4>
-						<p>Nam sagittis a augue eget scelerisque. Nullam lacinia consectetur sagittis. Nam sed neque id eros fermentum dignissim quis at tortor. Nullam ultricies urna quis sem sagittis pharetra. Nam erat turpis, cursus in ipsum at,
-							tempor imperdiet metus. In interdum id nulla tristique accumsan. Ut semper in quam nec pretium. Donec egestas finibus suscipit. Curabitur tincidunt convallis arcu. </p>
+            </nav>
+            <!-- End Navigation -->
+        </header>
+        <!-- End Main Top -->
 
-						<div class="price-box-bar">
-							<div class="cart-and-bay-btn">
-								<a class="btn-btn hvr-hover" data-fancybox-close="" href="#">Consult With Seller</a>
-                                <!-- <a class="btn-btn hvr-hover" href="#"><i class="fas fa-heart" style="margin-left: 70px;"></i> Add to wishlist</a> -->
-							</div>
-						</div>
-                    </div>
-                </div>
-            </div>
-			
-			<div class="row my-5">
-				<div class="card card-outline-secondary my-4">
-					<div class="card-header">
-						<h2>Service Reviews</h2>
-					</div>
-					<div class="card-body">
-						<div class="media mb-3">
-							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-							</div>
-						</div>
-						<hr>
-						<div class="media mb-3">
-							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-							</div>
-						</div>
-						<hr>
-						<div class="media mb-3">
-							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-							</div>
-						</div>
-						<hr>
-						<a href="#" class="btn hvr-hover">Leave a Review</a>
-					</div>
-				  </div>
-			</div>
-
-        </div>
-    </div>
-    <!-- End Cart -->
-
-    <!-- Start Footer  -->
-    <footer>
-        <div class="footer-main">
+        <!-- Start All Title Box -->
+        <div class="all-title-box">
             <div class="container">
-				<!-- <hr> -->
                 <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-widget">
-                            <h4>About Freshshop</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
-                        </div>
+                    <div class="col-lg-12">
+                        <h2>Service Details</h2>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-link-contact">
-                            <h4>Contact Us</h4>
-                            <ul>
-                                <li>
-                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
-                                </li>
-                                <li>
-                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
-                                </li>
-                                <li>
-                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-						<div class="footer-top-box footer-link-contact">
-							<h4>Product Updates</h4>
-							<form class="newsletter-box">
-								<div class="form-group">
-									<input class="" type="email" name="Email" placeholder="Email Address*" />
-									<i class="fa fa-envelope"></i>
-								</div>
-								<button class="btn hvr-hover" type="submit">Submit</button>
-							</form>
-						</div>
-					</div>
                 </div>
             </div>
         </div>
-    </footer>
+        <!-- End All Title Box -->
 
-    <a href="#" id="back-to-top" title="Back to top" style="display: none;"></a>
+        <!-- Start Shop Detail  -->
+        <div class="shop-detail-box-main" v-if="service">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-lg-5 col-md-5">
+                        <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" :src="`data:image/jpeg;base64,${service.serviceImage}`" style="margin-top: 30px;"
+                                        alt="First slide" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-6">
+                        <div class="single-product-details">
+                            <h2>{{ service.serviceName }}</h2>
+                            <h5>R{{ service.servicePrice }}</h5>
+                            <h4>Description:</h4>
+                            <p>{{ service.serviceDescription }}</p>
+                            <h4>Service Provider:</h4>
+                            <p v-if="user">{{ user.firstName }} {{ user.lastName }}</p>
+                            <p v-if="user">Email: {{ user.email }}</p>
+                            <p v-if="user">Phone: {{ user.phone }}</p>
+                            <p v-if="user">Residence: {{ user.residence }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Shop Detail -->
 
-</body>
+        <!-- Start Footer  -->
+        <footer>
+            <div class="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-widget">
+                                <h4>About Freshshop</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link-contact">
+                                <h4>Contact Us</h4>
+                                <ul>
+                                    <li>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756
+                                            <br>Preston Street Wichita,<br> KS 67213</p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888
+                                                705 770</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-envelope"></i>Email: <a
+                                                href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-top-box footer-link-contact">
+                                <h4>Product Updates</h4>
+                                <form class="newsletter-box">
+                                    <div class="form-group">
+                                        <input class="" type="email" name="Email" placeholder="Email Address*" />
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <button class="btn" type="submit" style="background-color: #007bff;">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer  -->
+        <button class="scroll-button" @click="scrollToTop">Top</button>
+        <button class="scroll-button" @click="scrollToBottom">Bottom</button>
+    </div>
 </template>
 
 <script>
 export default {
     name: "ServiceDetailsView",
-
-}
+    data() {
+        return {
+            userId: Number(this.$route.query.userId),
+            service: null,
+            user: null,
+        };
+    },
+    mounted() {
+    const serviceId = Number(this.$route.query.serviceId);
+    console.log("Service ID:", serviceId); // Debugging statement
+    // Fetch service details from the API
+    fetch(`http://localhost:8080/edumarket/serviceproduct/read/${serviceId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.service = data;
+        console.log("Fetched service:", this.service); // Debugging statement
+        const serviceUserId = this.service.user.userId;
+        // Fetch user details from the API
+        return fetch(`http://localhost:8080/edumarket/user/read/${serviceUserId}`);
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        this.user = data;
+        console.log("Fetched user:", this.user); // Debugging statement
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  },
+    methods: {
+        getRouteWithUserId(path) {
+            const userId = Number(this.$route.query.userId);
+            if (userId) {
+                return { path, query: { userId } };
+            } else {
+                // alert("Please login to view this page");
+                return { path: "/login" };
+            }
+        },
+        scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        },
+        scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        },
+    },
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+/* General Styling */
+body {
+    line-height: 1.6;
+}
+
+.scroll-button {
+    position: fixed;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.scroll-button:hover {
+    background-color: #0056b3;
+}
+
+.scroll-button:first-of-type {
+  bottom: 80px;
+}
+
+.scroll-button:last-of-type {
+  bottom: 20px;
+}
+
+/* Shop Detail Box */
+.shop-detail-box-main {
+    padding: 50px 0;
+}
+
+.single-product-details {
+    padding-left: 20px;
+}
+
+.single-product-details h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.single-product-details h5 {
+    font-size: 22px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.single-product-details h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.single-product-details p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Image Slider */
+.single-product-slider img {
+    object-fit: cover;
+    border-radius: 10px;
+    max-height: 400px;
+}
+
+.box-img-hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.fixed-size {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+</style>

@@ -57,19 +57,19 @@
                   <a class="nav-link" to="#" data-toggle="dropdown" style="cursor: pointer">Services</a>
                   <ul class="dropdown-menu">
                     <li>
-                      <router-link :to="{ path: '/services', query: { userId } }">Shop All Services</router-link>
+                      <router-link :to="{ path: '/services', query: { serviceCategory: 'All', userId } }">Shop All Services</router-link>
                     </li>
                     <li>
-                      <router-link :to="{ path: '/tutoring', query: { userId } }">Tutoring</router-link>
+                      <router-link :to="{ path: '/services', query: { serviceCategory: 'TUTORING', userId } }">Tutoring</router-link>
                     </li>
                     <li>
-                      <router-link :to="{ path: '/women-hairstyling', query: { userId } }">Women Hairstyling</router-link>
+                      <router-link :to="{ path: '/services', query: { serviceCategory: 'WOMENHAIRSTYLING', userId } }">Women Hairstyling</router-link>
                     </li>
                     <li>
-                      <router-link :to="{ path: '/men-cuts', query: { userId } }">Men Hair Cuts</router-link>
+                      <router-link :to="{ path: '/services', query: { serviceCategory: 'MENHAIRCUTS', userId } }">Men Hair Cuts</router-link>
                     </li>
                     <li>
-                      <router-link :to="{ path: '/service-others', query: { userId } }">Other</router-link>
+                      <router-link :to="{ path: '/services', query: { serviceCategory: 'OTHER', userId } }">Other</router-link>
                     </li>
                     <li>
                       <router-link :to="getRouteWithUserId('/add-service')">Sell</router-link>
@@ -185,7 +185,7 @@
                                 :alt="product.productName"
                               />
                               <div class="mask-icon">
-                                <ul>
+                                <!-- <ul>
                                   <li style="background-color: #007bff">
                                     <router-link
                                       :to="getProductDetailsRoute(product.id)"
@@ -204,12 +204,12 @@
                                       ><i class="far fa-heart"></i
                                     ></router-link>
                                   </li>
-                                </ul>
+                                </ul> -->
                                 <router-link
                                   class="cart"
-                                  :to="getRouteWithUserId('/cart')"
+                                  :to="getProductDetailsRoute(product.id)"
                                   style="background-color: #007bff"
-                                  >Add to Cart</router-link
+                                  >View Details</router-link
                                 >
                               </div>
                             </div>
@@ -364,8 +364,10 @@
     return {
       userId: Number(this.$route.query.userId),
       products: [],
+      services: [],
       searchQuery: "",
       selectedCategory: this.$route.query.category || "All",
+      selectedServiceCategory: this.$route.query.serviceCategory || "All",
       currentPage: 1,
       itemsPerPage: 6,
     };
@@ -380,10 +382,23 @@
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
+
+      fetch("http://localhost:8080/edumarket/serviceproduct/getall")
+      .then((response) => response.json())
+      .then((data) => {
+        this.services = data;
+        console.log("Fetched services:", this.services);
+      })
+      .catch((error) => {
+        console.error("Error fetching services:", error);
+      });
   },
   watch: {
     '$route.query.category'(newCategory) {
       this.selectedCategory = newCategory || "All";
+    },
+    '$route.query.serviceCategory'(newServiceCategory) {
+      this.selectedServiceCategory = newServiceCategory || "All";
     }
   },
   computed: {
@@ -407,6 +422,26 @@
       const end = start + this.itemsPerPage;
       return filtered.slice(start, end);
     },
+    filteredServices() {
+      const userId = Number(this.$route.query.userId);
+      const filtered = this.services.filter((service) => {
+        const matchesCategory =
+          this.selectedServiceCategory === "All" ||
+          service.serviceCategory === this.selectedServiceCategory;
+        return (
+          service.user.userId !== userId &&
+          service.serviceName
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) &&
+          matchesCategory
+        );
+      });
+
+      this.totalPages = Math.ceil(filtered.length / this.itemsPerPage);
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return filtered.slice(start, end);
+    },
     categoryCounts() {
       const counts = { All: this.products.length };
       this.products.forEach((product) => {
@@ -415,6 +450,17 @@
           counts[category] = 0;
         }
         counts[category]++;
+      });
+      return counts;
+    },
+    serviceCategoryCounts() {
+      const counts = { All: this.services.length };
+      this.services.forEach((service) => {
+        const serviceCategory = service.serviceCategory || "Other";
+        if (!counts[serviceCategory]) {
+          counts[serviceCategory] = 0;
+        }
+        counts[serviceCategory]++;
       });
       return counts;
     },
@@ -441,6 +487,10 @@
     selectCategory(category) {
       this.selectedCategory = category;
     },
+    selectServiceCategory(serviceCategory) {
+      this.selectedServiceCategory = serviceCategory;
+    },
+
     prevPage() {
       if (this.currentPage > 1) {
         this.currentPage--;

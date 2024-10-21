@@ -265,7 +265,7 @@
                   <ul>
                     <li style="background-color: #007bff">
                       <router-link
-                        :to="`/login`"
+                        :to="getProductDetailsRoute(product.id)"
                         data-toggle="tooltip"
                         data-placement="right"
                         title="View"
@@ -413,6 +413,10 @@ export default {
       if (value) {
         this.$router.push({ name: value });
       }
+    },
+    getProductDetailsRoute(productId) {
+      const userId = Number(this.$route.query.userId);
+      return { path: `/product-details`, query: { id: productId, userId } };
     },
     scrollToTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
