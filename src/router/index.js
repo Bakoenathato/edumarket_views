@@ -15,6 +15,7 @@ import MyAccountView from '../views/MyAccountView.vue'
 import CartView from '../views/CartView.vue'
 import AdminUserView from '@/views/AdminUserView.vue'
 import AdminEditView from '@/views/AdminEditView.vue'
+import AdminCreateUserView from '@/views/AdminCreateUserView.vue'
 
 const routes = [
   {
@@ -88,9 +89,14 @@ const routes = [
     component: AdminUserView,
   },
   {
-    path: "/AdminEditView",
+    path: "/admin/edit/:userId", 
     name: "AdminEditView",
     component: AdminEditView,
+  },
+  {
+    path: "/AdminCreateUserView",
+    name: "AdminCreateUserView",
+    component: AdminCreateUserView,
   },
   {
     path: "/cart",
