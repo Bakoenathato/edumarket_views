@@ -90,8 +90,10 @@ export default {
           console.log(loggedInUser);
 
           if (loggedInUser.role === "ADMIN"){
-            alert("Admin LogIn Successful");
-            this.$router.push({ name: "UserAddProductView", query: { userId: loggedInUser.userId} });
+            alert("Admin Login Successful");
+            this.$router.push({ name: "AdminUserView", query: { userId: loggedInUser.userId} });
+            console.log(loggedInUser.userId)
+            localStorage.setItem("user_id",loggedInUser.userId);
           }
           else{
             alert("User LogIn Successful");
