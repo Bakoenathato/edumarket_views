@@ -97,7 +97,7 @@ export default {
             alert("Admin Login Successful");
             this.$router.push({ name: "AdminUserView", query: { userId: loggedInUser.userId} });
             console.log(loggedInUser.userId)
-            // localStorage.setItem("user_id",loggedInUser.userId);
+            localStorage.setItem("user_id",loggedInUser.userId);
           }
           else{
             alert("User LogIn Successful");
